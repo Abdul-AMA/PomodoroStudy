@@ -1,5 +1,5 @@
 import reflex as rx
-
+import assets
 
 def sidebar_item(
     text: str, icon: str, href: str
@@ -29,10 +29,10 @@ def sidebar_item(
 
 def sidebar_items() -> rx.Component:
     return rx.vstack(
-        sidebar_item("Study", "notebook-pen", "/#"),
-        sidebar_item("Music", "music", "/#"),
-        sidebar_item("Analytics", "bar-chart-4", "/#"),
-        sidebar_item("Messages", "mail", "/#"),
+        sidebar_item("Study", "notebook-pen", "/study"),
+        sidebar_item("Music", "music", "/music"),
+        sidebar_item("Analytics", "bar-chart-4", "/analytics"),
+        sidebar_item("Ranking", "shield-half", "/ranking"),
         spacing="1",
         width="100%",
     )
@@ -42,27 +42,31 @@ def sidebar_bottom_profile() -> rx.Component:
     return rx.box(
         rx.desktop_only(
             rx.vstack(
-                rx.hstack(
-                    rx.image(
-                        src="logo.png",
-                        width="2.25em",
-                        height="auto",
-                        border_radius="25%",
+                rx.link(
+                    rx.hstack(
+                        rx.image(
+                           src="/logo.png",
+                            width="2.25em",
+                            height="auto",
+                            border_radius="25%",
+                        ),
+                        rx.heading("Boodaro Study", size="7", weight="bold"),
+                        align="center",
+                        justify="start",
+                        padding_x="0.5rem",
+                        width="100%",
                     ),
-                    rx.heading(
-                        "Boodaro Study", size="7", weight="bold"
-                    ),
-                    align="center",
-                    justify="start",
-                    padding_x="0.5rem",
+                    href="/",
                     width="100%",
-                ),
+                    underline="none"
+                )
+                ,
                 sidebar_items(),
                 rx.spacer(),
                 rx.vstack(
                     rx.vstack(
                         sidebar_item(
-                            "Settings", "settings", "/#"
+                            "Settings", "settings", "/settings"
                         ),
                         sidebar_item(
                             "Log out", "log-out", "/#"
@@ -77,7 +81,6 @@ def sidebar_bottom_profile() -> rx.Component:
                             size="3",
                             radius="full",
                         ),
-                        rx.hstack(
                         rx.vstack(
                             rx.box(
                                 rx.text(
@@ -97,27 +100,25 @@ def sidebar_bottom_profile() -> rx.Component:
                             justify="start",
                             width="100%",
                         ),
-                        rx.color_mode.button(),
+                        rx.box(
+                            rx.color_mode.button(),
+                            align="end",
+                        ),
                         padding_x="0.5rem",
                         align="center",
                         justify="start",
                         width="100%",
-                        ),
                         
                     ),
                     width="100%",
                     spacing="5",
                 ),
                 spacing="5",
-                # position="fixed",
-                # left="0px",
-                # top="0px",
-                # z_index="5",
+
                 padding_x="1em",
                 padding_y="1.5em",
                 bg=rx.color("accent", 3),
                 align="start",
-                # height="100%",
                 height="650px",
                 width="20em",
             ),
@@ -137,21 +138,25 @@ def sidebar_bottom_profile() -> rx.Component:
                                 ),
                                 width="100%",
                             ),
-                            rx.hstack(
-                    rx.image(
-                        src="logo.png",
-                        width="2.25em",
-                        height="auto",
-                        border_radius="25%",
+                    rx.link(
+                    rx.hstack(
+                        rx.image(
+                            src="/logo.png",
+                            width="2.25em",
+                            height="auto",
+                            border_radius="25%",
+                        ),
+                        rx.heading("Boodaro Study", size="7", weight="bold"),
+                        align="center",
+                        justify="start",
+                        padding_x="0.5rem",
+                        width="100%",
                     ),
-                    rx.heading(
-                        "Boodaro Study", size="7", weight="bold"
-                    ),
-                    align="center",
-                    justify="start",
-                    padding_x="0.5rem",
+                    href="/",
                     width="100%",
-                ),
+                    underline="none"
+                )
+                ,
                             sidebar_items(),
                             rx.spacer(),
                             rx.vstack(
@@ -159,7 +164,7 @@ def sidebar_bottom_profile() -> rx.Component:
                                     sidebar_item(
                                         "Settings",
                                         "settings",
-                                        "/#",
+                                        "/settings",
                                     ),
                                     sidebar_item(
                                         "Log out",
@@ -176,8 +181,6 @@ def sidebar_bottom_profile() -> rx.Component:
                                         size="3",
                                         radius="full",
                                     ),
-                                    rx.hstack(
-
                                     rx.vstack(
                                         rx.box(
                                             rx.text(
@@ -196,13 +199,15 @@ def sidebar_bottom_profile() -> rx.Component:
                                         justify="start",
                                         width="100%",
                                     ),
-                                    rx.color_mode.button(position="bottom-right"),
-                                    
+                                    rx.box(
+                                        rx.color_mode.button( ),
+                                        align="end",
+
+                                    ),                                    
                                     padding_x="0.5rem",
                                     align="center",
                                     justify="start",
                                     width="100%",
-                                    )
 
                                 ),
                                 width="100%",
