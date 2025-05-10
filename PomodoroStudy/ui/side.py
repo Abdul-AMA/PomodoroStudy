@@ -1,5 +1,6 @@
 import reflex as rx
 import assets
+from PomodoroStudy.state import State
 
 def sidebar_item(
     text: str, icon: str, href: str
@@ -84,7 +85,7 @@ def sidebar_bottom_profile() -> rx.Component:
                         rx.vstack(
                             rx.box(
                                 rx.text(
-                                    "My account",
+                                    State.name,
                                     size="3",
                                     weight="bold",
                                 ),
@@ -141,14 +142,14 @@ def sidebar_bottom_profile() -> rx.Component:
                     rx.link(
                     rx.hstack(
                         rx.image(
-                            src="/logo.png",
+                           src="/logo.png",
                             width="2.25em",
                             height="auto",
                             border_radius="25%",
                         ),
                         rx.heading("Boodaro Study", size="7", weight="bold"),
                         align="center",
-                        justify="start",
+                        justify="start",    
                         padding_x="0.5rem",
                         width="100%",
                     ),

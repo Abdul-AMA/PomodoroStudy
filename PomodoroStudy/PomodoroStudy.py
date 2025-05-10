@@ -13,28 +13,44 @@ from rxconfig import config
 def index() -> rx.Component:
     # Welcome Page (Index)
 
-    my_child =  rx.vstack(
-            rx.heading(State.label, size="9"),
-            rx.text(
-                "Get started by editing ",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
-                size="5",
-            ),
-            rx.input(
-                default_value="Write your name",
-                on_change=State.handle_input_change
-                ),
-            rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
-            ),
-            spacing="5",
-            justify="center",
-            align="center",
-            min_height="85vh",
-            id="my-child"
-        )
+    my_child = rx.vstack(
+        rx.image(
+            src="/logo.png",
+            alt="Pomodoro Logo",
+            width="100px",
+            height="100px"
+        ),
+        rx.heading("Welcome to FocusTime!", size="9"),
+        rx.text(
+            "Your personal Pomodoro companion — stay focused, stay sharp.",
+            size="4",
+            color="gray"
+        ),
+        rx.text(
+            "\"The key to success is consistency.\"",
+            size="3",
+            font_style="italic",
+            color="gray"
+        ),
+        rx.input(
+            placeholder="Enter your name...",
+            width="300px",
+            on_change=State.handle_name_change
+        ), 
+        rx.button(
+            "Start Studying",
+            on_click=State.start_studying
+        ),
+
+        spacing="6",
+        justify="center",
+        align="center", 
+        min_height="100vh",
+        background_color="#0D2847",
+        padding="4",
+        id="my-child"
+    )
+
     return base_page(my_child)
 
 
